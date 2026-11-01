@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class Migration {
 
-	public const DB_VERSION        = 1;
+	public const DB_VERSION        = 2;
 	public const OPTION_DB_VERSION = 'b83_whitelabel_db_version';
 
 	public static function on_activation(): void {
@@ -34,8 +34,12 @@ final class Migration {
 	}
 
 	private static function run(): void {
-		if ( false === get_option( Settings::OPTION, false ) ) {
+		$stored = get_option( Settings::OPTION, false );
+		if ( false === $stored ) {
 			add_option( Settings::OPTION, Settings::defaults(), '', true );
+		} elseif ( is_array( $stored ) && ( $stored['footer_text'] ?? '' ) === Settings::FOOTER_1_0_0 ) {
+			// 1.1.0: neuer Standardtext, nur wenn der alte nicht angepasst wurde.
+			Settings::update( array( 'footer_text' => Settings::defaults()['footer_text'] ) );
 		}
 		update_option( self::OPTION_DB_VERSION, self::DB_VERSION, true );
 	}

@@ -23,7 +23,7 @@ Updates kommen danach über GitHub wie bei den anderen b83-Plugins.
 
 Die Seite **b83 → White Label** sehen nur b83-Benutzer.
 
-- **Allgemein:** Fußzeilentexte, WordPress-Logo, Login-Logo (Mediathek oder b83-Logo), Breite und Link, Sperre für ausgeblendete Seiten, Löschen der Daten bei Deinstallation.
+- **Allgemein:** Fußzeilentexte, WordPress-Logo, Login-Logo (standardmäßig an, per Häkchen abschaltbar; Mediathek oder b83-Logo), Breite und Link, Sperre für ausgeblendete Seiten, Löschen der Daten bei Deinstallation.
 - **Dashboard:** Titel und Text des eigenen Widgets, Liste aller Widgets zum Freigeben. Die Liste wird beim Aufruf des Dashboards durch einen b83-Benutzer aktualisiert.
 - **Menü:** Das komplette Admin-Menü dieser Website als Baum mit Häkchen. Die Liste wird bei jedem Seitenaufruf eines b83-Benutzers aktualisiert. Neue Menüpunkte sind mit „neu“ markiert und für Kunden ausgeblendet, bis sie angehakt werden.
 - **b83-Benutzer:** Administratoren, die alles sehen. Ist niemand ausgewählt, gelten alle Administratoren als b83-Benutzer.

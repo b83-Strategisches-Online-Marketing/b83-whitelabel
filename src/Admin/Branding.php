@@ -22,9 +22,11 @@ final class Branding {
 		add_filter( 'update_footer', array( $this, 'footer_right' ), 99 );
 		add_action( 'admin_bar_menu', array( $this, 'admin_bar' ), 999 );
 
-		add_action( 'login_enqueue_scripts', array( $this, 'login_styles' ) );
-		add_filter( 'login_headerurl', array( $this, 'login_url' ) );
-		add_filter( 'login_headertext', array( $this, 'login_title' ) );
+		if ( Settings::value( 'login_logo_enabled' ) ) {
+			add_action( 'login_enqueue_scripts', array( $this, 'login_styles' ) );
+			add_filter( 'login_headerurl', array( $this, 'login_url' ) );
+			add_filter( 'login_headertext', array( $this, 'login_title' ) );
+		}
 	}
 
 	/* ---------------------------------------------------------------------

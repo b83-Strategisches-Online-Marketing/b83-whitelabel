@@ -23,6 +23,9 @@ final class Settings {
 	/** Trenner zwischen Haupt- und Unterpunkt im Menü-Schlüssel. */
 	public const SEP = '::';
 
+	/** Fußzeile der Version 1.0.0 (wird bei der Migration ersetzt, falls unverändert). */
+	public const FOOTER_1_0_0 = 'Website betreut von <a href="https://b83.at" target="_blank" rel="noopener">b83 – Strategisches Online Marketing</a> · <a href="mailto:office@b83.at">office@b83.at</a>';
+
 	/** ID des eigenen Dashboard-Widgets. */
 	public const NOTICE_WIDGET = 'b83_wl_notice';
 
@@ -32,9 +35,10 @@ final class Settings {
 	/** @return array<string,mixed> */
 	public static function defaults(): array {
 		return array(
-			'footer_text'          => 'Website betreut von <a href="https://b83.at" target="_blank" rel="noopener">b83 – Strategisches Online Marketing</a> · <a href="mailto:office@b83.at">office@b83.at</a>',
+			'footer_text'          => '© Webentwicklung: <a href="https://b83.at" target="_blank" rel="noopener">b83.at</a> - Strategisches Online Marketing',
 			'footer_right'         => '',
 			'hide_wp_logo'         => true,
+			'login_logo_enabled'   => true,
 			'login_logo_id'        => 0,
 			'login_logo_width'     => 120,
 			'login_url'            => 'https://b83.at',
@@ -116,6 +120,7 @@ final class Settings {
 					'footer_text'         => self::limit( wp_kses( (string) ( $input['footer_text'] ?? '' ), self::inline_html() ), 1000 ),
 					'footer_right'        => self::limit( wp_kses( (string) ( $input['footer_right'] ?? '' ), self::inline_html() ), 500 ),
 					'hide_wp_logo'        => ! empty( $input['hide_wp_logo'] ),
+					'login_logo_enabled'  => ! empty( $input['login_logo_enabled'] ),
 					'login_logo_id'       => absint( $input['login_logo_id'] ?? 0 ),
 					'login_logo_width'    => max( 40, min( 320, absint( $input['login_logo_width'] ?? 120 ) ) ),
 					'login_url'           => esc_url_raw( self::limit( (string) ( $input['login_url'] ?? '' ), 500 ) ),

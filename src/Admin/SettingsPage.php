@@ -261,6 +261,9 @@ final class SettingsPage {
 
 		echo '<h2>' . esc_html__( 'Login-Seite', 'b83-whitelabel' ) . '</h2>';
 		echo '<table class="form-table" role="presentation">';
+		echo '<tr><th scope="row">' . esc_html__( 'Eigenes Logo', 'b83-whitelabel' ) . '</th><td>';
+		$this->checkbox( 'login_logo_enabled', (bool) $s['login_logo_enabled'], __( 'Logo auf der Login-Seite ersetzen (sonst WordPress-Logo)', 'b83-whitelabel' ) );
+		echo '</td></tr>';
 		echo '<tr><th scope="row">' . esc_html__( 'Logo', 'b83-whitelabel' ) . '</th><td>';
 		echo '<div class="b83-wl-logo"><img id="b83-wl-logo-preview" src="' . esc_url( $preview ) . '" alt=""></div>';
 		echo '<input type="hidden" id="b83-wl-logo-id" name="b83_wl[login_logo_id]" value="' . esc_attr( (string) $logo_id ) . '">';
