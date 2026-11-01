@@ -1,0 +1,3 @@
+/* b83 White Label – Hinweis-Widget im Dashboard */
+#b83_wl_notice .b83-wl-notice p { font-size: 13px; line-height: 1.6; }
+#b83_wl_notice .b83-wl-notice p:last-child { margin-bottom: 0; }

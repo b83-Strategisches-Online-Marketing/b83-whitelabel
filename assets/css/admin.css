@@ -1,0 +1,12 @@
+/* b83 White Label – Einstellungsseite */
+.b83-wl .form-table th { width: 200px; }
+.b83-wl-logo { background: #f0f0f1; border: 1px solid #dcdcde; border-radius: 6px; padding: 16px; display: inline-block; margin-bottom: 8px; }
+.b83-wl-logo img { display: block; max-width: 240px; max-height: 120px; }
+.b83-wl-menu { max-width: 900px; margin: 16px 0; }
+.b83-wl-menu__top { background: #fff; border: 1px solid #dcdcde; border-radius: 6px; padding: 10px 14px; margin-bottom: 8px; }
+.b83-wl-menu__children { margin: 8px 0 0 26px; }
+.b83-wl-menu__children li { margin: 4px 0; }
+.b83-wl-menu__top.is-off .b83-wl-menu__children { opacity: .45; }
+.b83-wl-menu code, .b83-wl-widgets code { font-size: 11px; color: #646970; background: none; padding: 0; margin-left: 4px; }
+.b83-wl-new { display: inline-block; background: #e8860f; color: #fff; border-radius: 999px; padding: 0 8px; font-size: 11px; margin-left: 6px; }
+.b83-wl-widgets label, .b83-wl-users label { line-height: 2; }

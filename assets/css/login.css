@@ -1,0 +1,6 @@
+/* b83 White Label – Login-Seite. Logo-Bild und Größe kommen als kleine Inline-Konfiguration. */
+body.login div#login h1 a {
+	background-position: center;
+	background-repeat: no-repeat;
+	margin-bottom: 24px;
+}
