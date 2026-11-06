@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 – 2026-11-06
+
+- Menü-Liste in den Einstellungen in derselben Reihenfolge wie das echte Menü: Plugins mit eigener Position (z. B. Simple History) standen bisher am Ende der Liste
+- Neue Unterpunkte unter Dashboard und Profil (z. B. von Plugins) sind für Kunden jetzt ebenfalls ausgeblendet, bis sie angehakt werden
+
 ## 1.1.0 – 2026-11-01
 
 - Neuer Standardtext in der Fußzeile: „© Webentwicklung: b83.at - Strategisches Online Marketing“ (bestehende Seiten erhalten ihn, wenn der alte Text nicht angepasst wurde)

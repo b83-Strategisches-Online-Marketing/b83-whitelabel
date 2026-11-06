@@ -25,7 +25,7 @@ final class Menu {
 		global $menu, $submenu;
 
 		$tree = array();
-		foreach ( (array) $menu as $item ) {
+		foreach ( self::sorted( (array) $menu ) as $item ) {
 			if ( ! is_array( $item ) || empty( $item[2] ) ) {
 				continue;
 			}
@@ -46,6 +46,41 @@ final class Menu {
 			);
 		}
 		return $tree;
+	}
+
+	/**
+	 * Hauptmenü so sortieren, wie WordPress es später anzeigt.
+	 *
+	 * Während admin_menu liegen die Einträge noch in der Reihenfolge, in der
+	 * sie angelegt wurden. Plugins mit Position (z. B. Simple History mit 3.5)
+	 * stünden sonst am Ende der Liste statt an ihrer Stelle im Menü.
+	 * Nachbau von wp-admin/includes/menu.php (uksort + Filter menu_order).
+	 *
+	 * @param array<int|string, mixed> $items Hauptmenü.
+	 * @return array<int|string, mixed>
+	 */
+	private static function sorted( array $items ): array {
+		uksort( $items, 'strnatcasecmp' );
+
+		if ( apply_filters( 'custom_menu_order', false ) ) {
+			$default = array();
+			foreach ( $items as $item ) {
+				$default[] = is_array( $item ) ? (string) ( $item[2] ?? '' ) : '';
+			}
+			$order   = array_flip( (array) apply_filters( 'menu_order', $default ) );
+			$default = array_flip( $default );
+			usort(
+				$items,
+				static function ( $a, $b ) use ( $order, $default ): int {
+					$a = is_array( $a ) ? (string) ( $a[2] ?? '' ) : '';
+					$b = is_array( $b ) ? (string) ( $b[2] ?? '' ) : '';
+					$pa = $order[ $a ] ?? $default[ $a ] ?? PHP_INT_MAX;
+					$pb = $order[ $b ] ?? $default[ $b ] ?? PHP_INT_MAX;
+					return $pa <=> $pb;
+				}
+			);
+		}
+		return $items;
 	}
 
 	/** Zähler-Blasen (Updates, Kommentare …) und HTML aus Menütiteln entfernen. */
@@ -150,10 +185,7 @@ final class Menu {
 			if ( in_array( $key, (array) Settings::value( 'allowed_menu' ), true ) ) {
 				return true;
 			}
-			// Unterpunkte von Immer-sichtbar-Punkten, die beim Speichern unbekannt waren (z. B. nur bei Redakteuren vorhanden).
-			return in_array( $parent, self::always_allowed(), true )
-				&& ! in_array( $key, (array) Settings::value( 'menu_seen' ), true )
-				&& ! in_array( $child, self::default_hidden_children(), true );
+			return false;
 		}
 		return ! in_array( $child, self::default_hidden_children(), true );
 	}
