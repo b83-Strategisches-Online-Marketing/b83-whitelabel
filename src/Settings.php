@@ -53,6 +53,7 @@ final class Settings {
 			'menu_seen'            => array(),
 			'menu_configured'      => false,
 			'block_hidden'         => true,
+			'user_registered_column' => 'all',
 			'agency_users'         => array(),
 			'delete_on_uninstall'  => false,
 		);
@@ -126,6 +127,7 @@ final class Settings {
 					'login_url'           => esc_url_raw( self::limit( (string) ( $input['login_url'] ?? '' ), 500 ) ),
 					'login_title'         => self::limit( sanitize_text_field( (string) ( $input['login_title'] ?? '' ) ), 200 ),
 					'block_hidden'        => ! empty( $input['block_hidden'] ),
+					'user_registered_column' => in_array( $input['user_registered_column'] ?? '', array( 'all', 'agency', 'off' ), true ) ? (string) $input['user_registered_column'] : 'all',
 					'delete_on_uninstall' => ! empty( $input['delete_on_uninstall'] ),
 				);
 

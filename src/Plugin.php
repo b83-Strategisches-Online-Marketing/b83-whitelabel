@@ -49,6 +49,7 @@ final class Plugin {
 		if ( is_admin() ) {
 			( new Admin\Dashboard() )->register();
 			( new Admin\MenuFilter() )->register();
+			( new Admin\UserColumns() )->register();
 		}
 	}
 

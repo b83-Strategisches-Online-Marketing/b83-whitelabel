@@ -279,6 +279,20 @@ final class SettingsPage {
 		echo '<p class="description">' . esc_html__( 'Für Screenreader, wird nicht angezeigt.', 'b83-whitelabel' ) . '</p></td></tr>';
 		echo '</table>';
 
+		echo '<h2>' . esc_html__( 'Benutzerliste', 'b83-whitelabel' ) . '</h2>';
+		echo '<table class="form-table" role="presentation"><tr><th scope="row"><label for="b83-wl-registered">' . esc_html__( 'Spalte „Registriert“', 'b83-whitelabel' ) . '</label></th><td>';
+		echo '<select id="b83-wl-registered" name="b83_wl[user_registered_column]">';
+		foreach ( array(
+			'all'    => __( 'Für alle anzeigen', 'b83-whitelabel' ),
+			'agency' => __( 'Nur für b83-Benutzer', 'b83-whitelabel' ),
+			'off'    => __( 'Nicht anzeigen', 'b83-whitelabel' ),
+		) as $value => $label ) {
+			printf( '<option value="%1$s"%2$s>%3$s</option>', esc_attr( $value ), selected( (string) $s['user_registered_column'], $value, false ), esc_html( $label ) );
+		}
+		echo '</select>';
+		echo '<p class="description">' . esc_html__( 'Zeigt das Registrierungsdatum in der Benutzerliste, per Klick auf die Überschrift sortierbar (neueste zuerst).', 'b83-whitelabel' ) . '</p>';
+		echo '</td></tr></table>';
+
 		echo '<h2>' . esc_html__( 'Sperre und Deinstallation', 'b83-whitelabel' ) . '</h2>';
 		echo '<table class="form-table" role="presentation"><tr><th scope="row">' . esc_html__( 'Sperre', 'b83-whitelabel' ) . '</th><td>';
 		$this->checkbox( 'block_hidden', (bool) $s['block_hidden'], __( 'Ausgeblendete Menüseiten auch beim direkten Aufruf sperren (Umleitung aufs Dashboard)', 'b83-whitelabel' ) );

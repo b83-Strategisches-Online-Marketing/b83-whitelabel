@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0 – 2026-11-13
+
+- Neue Spalte „Registriert“ in der Benutzerliste, sortierbar (neueste zuerst); einstellbar unter Allgemein → Benutzerliste: für alle, nur für b83-Benutzer oder aus
+
 ## 1.1.1 – 2026-11-06
 
 - Menü-Liste in den Einstellungen in derselben Reihenfolge wie das echte Menü: Plugins mit eigener Position (z. B. Simple History) standen bisher am Ende der Liste
