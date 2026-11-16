@@ -103,40 +103,43 @@ body.login.b83-wl-login--still::after {
 	}
 }
 
-/* Logo auf weißer Kachel (dunkler Hintergrund und Bild) */
-body.login.b83-wl-login--dark div#login h1 a,
-body.login.b83-wl-login--image div#login h1 a {
-	box-sizing: content-box;
-	padding: 12px;
-	background-color: #fff;
-	background-origin: content-box;
-	background-repeat: no-repeat;
-	background-position: center;
-	border-radius: 18px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+/* Ein Kasten für Logo, Meldungen, Formular und Links */
+body.login.b83-wl-login #login {
+	box-sizing: border-box;
+	width: 368px;
+	max-width: calc(100% - 32px);
+	margin: 7vh auto 24px;
+	padding: 32px 28px 22px;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 24px 60px -12px rgba(20, 10, 0, 0.45), 0 2px 6px rgba(20, 10, 0, 0.14);
 }
 
-/* Formular-Kasten */
-body.login.b83-wl-login #login form,
-body.login.b83-wl-login .message,
-body.login.b83-wl-login .notice,
-body.login.b83-wl-login #login_error {
-	border-radius: 14px;
+body.login.b83-wl-login div#login h1 a {
+	margin-bottom: 8px;
 }
 
 body.login.b83-wl-login #login form {
+	margin: 16px 0 0;
+	padding: 0;
+	display: flow-root;
+	overflow: visible;
+	background: none;
 	border: 0;
-	box-shadow: 0 20px 50px -12px rgba(40, 20, 0, 0.35), 0 2px 6px rgba(40, 20, 0, 0.12);
+	box-shadow: none;
 }
 
-body.login.b83-wl-login .message,
-body.login.b83-wl-login .notice,
-body.login.b83-wl-login #login_error {
-	box-shadow: 0 10px 30px -12px rgba(40, 20, 0, 0.35);
+body.login.b83-wl-login #login .message,
+body.login.b83-wl-login #login .notice,
+body.login.b83-wl-login #login #login_error {
+	margin: 16px 0 0;
+	border-radius: 8px;
+	background-color: #f6f4f1;
+	box-shadow: none;
 }
 
-body.login.b83-wl-login .message,
-body.login.b83-wl-login .notice-info {
+body.login.b83-wl-login #login .message,
+body.login.b83-wl-login #login .notice-info {
 	border-left-color: #e8860f;
 }
 
@@ -198,49 +201,36 @@ body.login.b83-wl-login .notice a {
 	color: #b45f06;
 }
 
-/* Links unter dem Formular */
+/* Links im Kasten */
 body.login.b83-wl-login #nav,
 body.login.b83-wl-login #backtoblog,
 body.login.b83-wl-login .privacy-policy-page-link {
+	padding: 0;
 	text-align: center;
 }
 
-body.login.b83-wl-login--light #nav a,
-body.login.b83-wl-login--light #backtoblog a,
-body.login.b83-wl-login--light .privacy-policy-page-link a {
-	color: #50463a;
+body.login.b83-wl-login #nav {
+	margin: 20px 0 0;
 }
 
-body.login.b83-wl-login--light #nav a:hover,
-body.login.b83-wl-login--light #backtoblog a:hover,
-body.login.b83-wl-login--light .privacy-policy-page-link a:hover {
+body.login.b83-wl-login #backtoblog {
+	margin: 10px 0 0;
+}
+
+body.login.b83-wl-login .privacy-policy-page-link {
+	margin: 14px 0 0;
+}
+
+body.login.b83-wl-login #nav a,
+body.login.b83-wl-login #backtoblog a,
+body.login.b83-wl-login .privacy-policy-page-link a {
+	color: #50575e;
+}
+
+body.login.b83-wl-login #nav a:hover,
+body.login.b83-wl-login #backtoblog a:hover,
+body.login.b83-wl-login .privacy-policy-page-link a:hover {
 	color: #b45f06;
-}
-
-body.login.b83-wl-login--dark #nav,
-body.login.b83-wl-login--dark #nav a,
-body.login.b83-wl-login--dark #backtoblog a,
-body.login.b83-wl-login--dark .privacy-policy-page-link a,
-body.login.b83-wl-login--image #nav,
-body.login.b83-wl-login--image #nav a,
-body.login.b83-wl-login--image #backtoblog a,
-body.login.b83-wl-login--image .privacy-policy-page-link a {
-	color: rgba(255, 255, 255, 0.88);
-}
-
-body.login.b83-wl-login--dark #nav a:hover,
-body.login.b83-wl-login--dark #backtoblog a:hover,
-body.login.b83-wl-login--dark .privacy-policy-page-link a:hover,
-body.login.b83-wl-login--image #nav a:hover,
-body.login.b83-wl-login--image #backtoblog a:hover,
-body.login.b83-wl-login--image .privacy-policy-page-link a:hover {
-	color: #ffc266;
-}
-
-body.login.b83-wl-login--image #nav a,
-body.login.b83-wl-login--image #backtoblog a,
-body.login.b83-wl-login--image .privacy-policy-page-link a {
-	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* Sprachauswahl */

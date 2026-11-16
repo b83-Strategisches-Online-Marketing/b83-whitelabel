@@ -177,7 +177,7 @@ final class Branding {
 	 */
 	private function logo(): array {
 		$width = (int) Settings::value( 'login_logo_width' );
-		$width = $width > 0 ? $width : 120;
+		$width = $width > 0 ? $width : 96;
 		$url   = B83_WL_URL . 'assets/img/b83-logo.svg';
 		$ratio = 1.0;
 

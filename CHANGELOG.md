@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0 – 2026-11-16
+
+- Login-Seite: Logo, Meldungen, Formular und Links sitzen jetzt gemeinsam in einem weißen Kasten (alle drei Gestaltungen)
+- Standardbreite des Login-Logos 96 statt 120 px (bestehende Seiten mit 120 px werden umgestellt)
+
 ## 1.3.0 – 2026-11-16
 
 - Login-Seite im b83-Design: dunkler Farbverlauf als Standard, wahlweise heller Verlauf oder eigenes Hintergrundbild; abgerundeter Kasten, Button und Links in b83-Orange, Fußzeilentext unter dem Formular

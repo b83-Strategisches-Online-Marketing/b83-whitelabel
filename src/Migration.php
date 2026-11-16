@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class Migration {
 
-	public const DB_VERSION        = 2;
+	public const DB_VERSION        = 3;
 	public const OPTION_DB_VERSION = 'b83_whitelabel_db_version';
 
 	public static function on_activation(): void {
@@ -40,6 +40,10 @@ final class Migration {
 		} elseif ( is_array( $stored ) && ( $stored['footer_text'] ?? '' ) === Settings::FOOTER_1_0_0 ) {
 			// 1.1.0: neuer Standardtext, nur wenn der alte nicht angepasst wurde.
 			Settings::update( array( 'footer_text' => Settings::defaults()['footer_text'] ) );
+		}
+		// 1.4.0: Logo sitzt im Login-Kasten, alte Standardbreite 120 px wird 96 px.
+		if ( is_array( $stored ) && (int) get_option( self::OPTION_DB_VERSION, 0 ) < 3 && 120 === (int) ( $stored['login_logo_width'] ?? 0 ) ) {
+			Settings::update( array( 'login_logo_width' => 96 ) );
 		}
 		update_option( self::OPTION_DB_VERSION, self::DB_VERSION, true );
 	}
