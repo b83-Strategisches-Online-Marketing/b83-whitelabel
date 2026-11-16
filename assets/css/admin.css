@@ -10,3 +10,4 @@
 .b83-wl-menu code, .b83-wl-widgets code { font-size: 11px; color: #646970; background: none; padding: 0; margin-left: 4px; }
 .b83-wl-new { display: inline-block; background: #e8860f; color: #fff; border-radius: 999px; padding: 0 8px; font-size: 11px; margin-left: 6px; }
 .b83-wl-widgets label, .b83-wl-users label { line-height: 2; }
+.b83-wl-bg:has(img[hidden]) { display: none; }

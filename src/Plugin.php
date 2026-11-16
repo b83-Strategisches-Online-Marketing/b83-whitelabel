@@ -45,6 +45,7 @@ final class Plugin {
 		}
 
 		( new Admin\Branding() )->register();
+		( new Admin\ColorScheme() )->register();
 
 		if ( is_admin() ) {
 			( new Admin\Dashboard() )->register();

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 – 2026-11-16
+
+- Login-Seite im b83-Design: dunkler Farbverlauf als Standard, wahlweise heller Verlauf oder eigenes Hintergrundbild; abgerundeter Kasten, Button und Links in b83-Orange, Fußzeilentext unter dem Formular
+- Der Farbverlauf bewegt sich langsam (abschaltbar, ruht bei „Bewegung reduzieren“)
+- Neues Farbschema „b83“ für das Backend: für alle vorgeben (Standard), nur im Profil anbieten oder aus
+- Neuer Filter `b83_wl_login_background_url`
+
 ## 1.2.0 – 2026-11-13
 
 - Neue Spalte „Registriert“ in der Benutzerliste, sortierbar (neueste zuerst); einstellbar unter Allgemein → Benutzerliste: für alle, nur für b83-Benutzer oder aus

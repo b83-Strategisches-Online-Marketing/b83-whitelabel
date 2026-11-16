@@ -1,6 +1,286 @@
-/* b83 White Label – Login-Seite. Logo-Bild und Größe kommen als kleine Inline-Konfiguration. */
-body.login div#login h1 a {
+/* b83 White Label – Login-Seite. Logo-Bild, Größe und Hintergrundbild kommen als kleine Inline-Konfiguration. */
+
+/* Logo */
+body.login.b83-wl-logo div#login h1 a {
 	background-position: center;
 	background-repeat: no-repeat;
 	margin-bottom: 24px;
+}
+
+/* ---------------------------------------------------------------------
+ * Gestaltung (Klassen b83-wl-login--dark / --light / --image am body)
+ * ------------------------------------------------------------------- */
+
+body.login.b83-wl-login {
+	position: relative;
+	isolation: isolate;
+	min-height: 100vh;
+	box-sizing: border-box;
+	background-color: #14110f;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+body.login.b83-wl-login--light {
+	background-color: #fbf3e6;
+}
+
+/* Farbflächen hinter dem Formular */
+body.login.b83-wl-login--dark::before,
+body.login.b83-wl-login--dark::after,
+body.login.b83-wl-login--light::before,
+body.login.b83-wl-login--light::after {
+	content: "";
+	position: fixed;
+	inset: -30%;
+	z-index: -1;
+	filter: blur(60px);
+	pointer-events: none;
+	will-change: transform;
+}
+
+body.login.b83-wl-login--dark::before {
+	background:
+		radial-gradient(36% 40% at 20% 24%, #e8860f 0, transparent 70%),
+		radial-gradient(34% 40% at 82% 70%, #b3341f 0, transparent 70%);
+	opacity: 0.85;
+	animation: b83-wl-drift 26s ease-in-out infinite alternate;
+}
+
+body.login.b83-wl-login--dark::after {
+	background:
+		radial-gradient(32% 36% at 76% 18%, #5a2a6b 0, transparent 70%),
+		radial-gradient(36% 40% at 26% 82%, #1f3c5c 0, transparent 70%);
+	opacity: 0.9;
+	animation: b83-wl-drift-2 34s ease-in-out infinite alternate;
+}
+
+body.login.b83-wl-login--light::before {
+	background:
+		radial-gradient(38% 42% at 22% 28%, #ffb347 0, transparent 70%),
+		radial-gradient(36% 40% at 78% 22%, #ffd98a 0, transparent 70%),
+		radial-gradient(40% 44% at 70% 78%, #f07d3a 0, transparent 70%);
+	animation: b83-wl-drift 26s ease-in-out infinite alternate;
+}
+
+body.login.b83-wl-login--light::after {
+	background:
+		radial-gradient(34% 38% at 28% 80%, #f6a5a0 0, transparent 70%),
+		radial-gradient(30% 34% at 52% 48%, #fff4d6 0, transparent 70%);
+	animation: b83-wl-drift-2 34s ease-in-out infinite alternate;
+}
+
+/* Bild: leichte Abdunklung, damit Text und Formular lesbar bleiben */
+body.login.b83-wl-login--image::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	background: linear-gradient(180deg, rgba(20, 17, 15, 0.1), rgba(20, 17, 15, 0.45));
+	pointer-events: none;
+}
+
+@keyframes b83-wl-drift {
+	from { transform: translate(-4%, -3%) rotate(0deg) scale(1); }
+	to { transform: translate(5%, 4%) rotate(14deg) scale(1.12); }
+}
+
+@keyframes b83-wl-drift-2 {
+	from { transform: translate(4%, 3%) rotate(0deg) scale(1.08); }
+	to { transform: translate(-5%, -4%) rotate(-12deg) scale(1); }
+}
+
+body.login.b83-wl-login--still::before,
+body.login.b83-wl-login--still::after {
+	animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.login.b83-wl-login::before,
+	body.login.b83-wl-login::after {
+		animation: none;
+	}
+}
+
+/* Logo auf weißer Kachel (dunkler Hintergrund und Bild) */
+body.login.b83-wl-login--dark div#login h1 a,
+body.login.b83-wl-login--image div#login h1 a {
+	box-sizing: content-box;
+	padding: 12px;
+	background-color: #fff;
+	background-origin: content-box;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 18px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Formular-Kasten */
+body.login.b83-wl-login #login form,
+body.login.b83-wl-login .message,
+body.login.b83-wl-login .notice,
+body.login.b83-wl-login #login_error {
+	border-radius: 14px;
+}
+
+body.login.b83-wl-login #login form {
+	border: 0;
+	box-shadow: 0 20px 50px -12px rgba(40, 20, 0, 0.35), 0 2px 6px rgba(40, 20, 0, 0.12);
+}
+
+body.login.b83-wl-login .message,
+body.login.b83-wl-login .notice,
+body.login.b83-wl-login #login_error {
+	box-shadow: 0 10px 30px -12px rgba(40, 20, 0, 0.35);
+}
+
+body.login.b83-wl-login .message,
+body.login.b83-wl-login .notice-info {
+	border-left-color: #e8860f;
+}
+
+body.login.b83-wl-login form .input,
+body.login.b83-wl-login form input[type="text"],
+body.login.b83-wl-login form input[type="password"],
+body.login.b83-wl-login form input[type="email"] {
+	border-radius: 8px;
+}
+
+body.login.b83-wl-login input[type="text"]:focus,
+body.login.b83-wl-login input[type="password"]:focus,
+body.login.b83-wl-login input[type="email"]:focus,
+body.login.b83-wl-login input[type="checkbox"]:focus,
+body.login.b83-wl-login select:focus {
+	border-color: #d97a0c;
+	box-shadow: 0 0 0 1px #d97a0c;
+}
+
+body.login.b83-wl-login input[type="checkbox"]:checked::before {
+	filter: sepia(1) saturate(6) hue-rotate(350deg);
+}
+
+/* Buttons und Links in b83-Orange */
+body.login.b83-wl-login.wp-core-ui .button-primary {
+	background: #d97a0c;
+	border-color: #d97a0c;
+	border-radius: 8px;
+	color: #fff;
+	font-weight: 600;
+}
+
+body.login.b83-wl-login.wp-core-ui .button-primary:hover,
+body.login.b83-wl-login.wp-core-ui .button-primary:focus {
+	background: #b9660a;
+	border-color: #b9660a;
+	color: #fff;
+}
+
+body.login.b83-wl-login.wp-core-ui .button-primary:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px #d97a0c;
+}
+
+body.login.b83-wl-login .button.wp-hide-pw,
+body.login.b83-wl-login .button.wp-hide-pw:hover,
+body.login.b83-wl-login .button.wp-hide-pw:focus {
+	color: #b45f06;
+}
+
+body.login.b83-wl-login.wp-core-ui .button:not(.button-primary):not(.wp-hide-pw) {
+	border-color: #b45f06;
+	color: #b45f06;
+	border-radius: 8px;
+}
+
+body.login.b83-wl-login form a,
+body.login.b83-wl-login .message a,
+body.login.b83-wl-login .notice a {
+	color: #b45f06;
+}
+
+/* Links unter dem Formular */
+body.login.b83-wl-login #nav,
+body.login.b83-wl-login #backtoblog,
+body.login.b83-wl-login .privacy-policy-page-link {
+	text-align: center;
+}
+
+body.login.b83-wl-login--light #nav a,
+body.login.b83-wl-login--light #backtoblog a,
+body.login.b83-wl-login--light .privacy-policy-page-link a {
+	color: #50463a;
+}
+
+body.login.b83-wl-login--light #nav a:hover,
+body.login.b83-wl-login--light #backtoblog a:hover,
+body.login.b83-wl-login--light .privacy-policy-page-link a:hover {
+	color: #b45f06;
+}
+
+body.login.b83-wl-login--dark #nav,
+body.login.b83-wl-login--dark #nav a,
+body.login.b83-wl-login--dark #backtoblog a,
+body.login.b83-wl-login--dark .privacy-policy-page-link a,
+body.login.b83-wl-login--image #nav,
+body.login.b83-wl-login--image #nav a,
+body.login.b83-wl-login--image #backtoblog a,
+body.login.b83-wl-login--image .privacy-policy-page-link a {
+	color: rgba(255, 255, 255, 0.88);
+}
+
+body.login.b83-wl-login--dark #nav a:hover,
+body.login.b83-wl-login--dark #backtoblog a:hover,
+body.login.b83-wl-login--dark .privacy-policy-page-link a:hover,
+body.login.b83-wl-login--image #nav a:hover,
+body.login.b83-wl-login--image #backtoblog a:hover,
+body.login.b83-wl-login--image .privacy-policy-page-link a:hover {
+	color: #ffc266;
+}
+
+body.login.b83-wl-login--image #nav a,
+body.login.b83-wl-login--image #backtoblog a,
+body.login.b83-wl-login--image .privacy-policy-page-link a {
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Sprachauswahl */
+body.login.b83-wl-login .language-switcher form {
+	background: none;
+	border: 0;
+	box-shadow: none;
+}
+
+body.login.b83-wl-login--dark .language-switcher label .dashicons,
+body.login.b83-wl-login--image .language-switcher label .dashicons {
+	color: rgba(255, 255, 255, 0.88);
+}
+
+/* Hinweis unter dem Formular */
+.b83-wl-login__credit {
+	margin: 8px auto 24px;
+	padding: 0 16px;
+	max-width: 320px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #6b5a45;
+}
+
+.b83-wl-login__credit a {
+	color: inherit;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.b83-wl-login__credit a:hover {
+	text-decoration: underline;
+}
+
+body.login.b83-wl-login--dark .b83-wl-login__credit,
+body.login.b83-wl-login--image .b83-wl-login__credit {
+	color: rgba(255, 255, 255, 0.72);
+}
+
+body.login.b83-wl-login--image .b83-wl-login__credit {
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }

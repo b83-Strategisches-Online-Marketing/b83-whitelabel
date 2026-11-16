@@ -43,6 +43,11 @@ final class Settings {
 			'login_logo_width'     => 120,
 			'login_url'            => 'https://b83.at',
 			'login_title'          => 'b83 – Strategisches Online Marketing',
+			'login_style'          => 'dark',
+			'login_bg_id'          => 0,
+			'login_animate'        => true,
+			'login_credit'         => true,
+			'admin_scheme'         => 'force',
 			'notice_title'         => 'Kundeninformation',
 			'notice_text'          => '<p>Diese Website verwendet Software mit lizenzpflichtigen Komponenten. Die Lizenzen hat <strong>b83 – Strategisches Online Marketing</strong> für Websites erworben, die im Rahmen unserer Agentur erstellt und betreut werden. Sie dürfen diese Lizenzen auf Ihrer Website nutzen und erhalten darüber laufend Updates.</p><p>Dazu gehören auch die von b83 selbst entwickelten Plugins, die wir offiziell zum Verkauf anbieten: Sie sind auf Ihrer Website als <strong>Pro-Version</strong> lizenziert.</p><p>Die Lizenz- und Updatekosten unserer Standardausstattung, also unserer eigenen Plugins, von Elementor und der weiteren von uns eingesetzten Komponenten, sind mit der vereinbarten Wartungs- und Updatepauschale abgegolten. Für Sie fallen dafür keine weiteren Kosten an. Ausnahmen, etwa wenn Sie eine Lizenz selbst erwerben und bezahlen, regeln wir individuell mit Ihnen. Die Lizenzen gelten für die Dauer der Wartungsvereinbarung.</p><p>Für Fragen stehen wir Ihnen gerne zur Verfügung.</p><p>b83 :: Strategisches Online Marketing<br>Tel +43-6135-21919<br>Fax +43-6135-21919 19<br><a href="mailto:office@b83.at">office@b83.at</a><br><a href="https://b83.at" target="_blank" rel="noopener">b83.at</a></p>',
 			'dashboard_for_agency' => true,
@@ -126,6 +131,11 @@ final class Settings {
 					'login_logo_width'    => max( 40, min( 320, absint( $input['login_logo_width'] ?? 120 ) ) ),
 					'login_url'           => esc_url_raw( self::limit( (string) ( $input['login_url'] ?? '' ), 500 ) ),
 					'login_title'         => self::limit( sanitize_text_field( (string) ( $input['login_title'] ?? '' ) ), 200 ),
+					'login_style'         => self::choice( $input['login_style'] ?? '', array( 'dark', 'light', 'image', 'off' ) ),
+					'login_bg_id'         => absint( $input['login_bg_id'] ?? 0 ),
+					'login_animate'       => ! empty( $input['login_animate'] ),
+					'login_credit'        => ! empty( $input['login_credit'] ),
+					'admin_scheme'        => self::choice( $input['admin_scheme'] ?? '', array( 'force', 'offer', 'off' ) ),
 					'block_hidden'        => ! empty( $input['block_hidden'] ),
 					'user_registered_column' => in_array( $input['user_registered_column'] ?? '', array( 'all', 'agency', 'off' ), true ) ? (string) $input['user_registered_column'] : 'all',
 					'delete_on_uninstall' => ! empty( $input['delete_on_uninstall'] ),
@@ -172,6 +182,16 @@ final class Settings {
 	private static function keys( $raw, array $allowed ): array {
 		$raw = array_map( 'strval', (array) $raw );
 		return array_values( array_intersect( $allowed, $raw ) );
+	}
+
+	/**
+	 * Wert aus einer festen Auswahl, sonst der erste Eintrag.
+	 *
+	 * @param mixed    $value   Eingabe.
+	 * @param string[] $allowed Erlaubte Werte.
+	 */
+	private static function choice( $value, array $allowed ): string {
+		return in_array( $value, $allowed, true ) ? (string) $value : $allowed[0];
 	}
 
 	private static function limit( string $value, int $max ): string {

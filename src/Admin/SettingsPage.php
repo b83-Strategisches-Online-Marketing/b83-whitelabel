@@ -90,6 +90,7 @@ final class SettingsPage {
 				'chooseLogo' => __( 'Login-Logo wählen', 'b83-whitelabel' ),
 				'useLogo'    => __( 'Dieses Bild verwenden', 'b83-whitelabel' ),
 				'defaultUrl' => B83_WL_URL . 'assets/img/b83-logo.svg',
+				'chooseBg'   => __( 'Hintergrundbild wählen', 'b83-whitelabel' ),
 			)
 		);
 	}
@@ -238,6 +239,22 @@ final class SettingsPage {
 		);
 	}
 
+	/**
+	 * Auswahlfeld ausgeben.
+	 *
+	 * @param string               $name    Feldname.
+	 * @param string               $current Aktueller Wert.
+	 * @param array<string,string> $options Wert => Beschriftung.
+	 * @param string               $id      HTML-ID.
+	 */
+	private function select( string $name, string $current, array $options, string $id ): void {
+		printf( '<select id="%1$s" name="b83_wl[%2$s]">', esc_attr( $id ), esc_attr( $name ) );
+		foreach ( $options as $value => $label ) {
+			printf( '<option value="%1$s"%2$s>%3$s</option>', esc_attr( $value ), selected( $current, $value, false ), esc_html( $label ) );
+		}
+		echo '</select>';
+	}
+
 	/** @param array<string,mixed> $s Einstellungen. */
 	private function tab_general( array $s ): void {
 		$logo_id  = (int) $s['login_logo_id'];
@@ -277,19 +294,64 @@ final class SettingsPage {
 		echo '<tr><th scope="row"><label for="b83-wl-login-title">' . esc_html__( 'Linktext', 'b83-whitelabel' ) . '</label></th><td>';
 		echo '<input id="b83-wl-login-title" type="text" name="b83_wl[login_title]" class="regular-text" value="' . esc_attr( (string) $s['login_title'] ) . '">';
 		echo '<p class="description">' . esc_html__( 'Für Screenreader, wird nicht angezeigt.', 'b83-whitelabel' ) . '</p></td></tr>';
+
+		$bg_id  = (int) $s['login_bg_id'];
+		$bg_url = $bg_id > 0 ? (string) wp_get_attachment_image_url( $bg_id, 'medium' ) : '';
+		echo '<tr><th scope="row"><label for="b83-wl-login-style">' . esc_html__( 'Gestaltung', 'b83-whitelabel' ) . '</label></th><td>';
+		$this->select(
+			'login_style',
+			(string) $s['login_style'],
+			array(
+				'dark'  => __( 'Farbverlauf dunkel (b83-Standard)', 'b83-whitelabel' ),
+				'light' => __( 'Farbverlauf hell', 'b83-whitelabel' ),
+				'image' => __( 'Eigenes Hintergrundbild', 'b83-whitelabel' ),
+				'off'   => __( 'Aus (WordPress-Standard)', 'b83-whitelabel' ),
+			),
+			'b83-wl-login-style'
+		);
+		echo '<p class="description">' . esc_html__( 'Hintergrund, abgerundeter Kasten sowie Button und Links in b83-Orange.', 'b83-whitelabel' ) . '</p>';
+		echo '</td></tr>';
+		echo '<tr><th scope="row">' . esc_html__( 'Hintergrundbild', 'b83-whitelabel' ) . '</th><td>';
+		echo '<div class="b83-wl-logo b83-wl-bg"><img id="b83-wl-bg-preview" src="' . esc_url( $bg_url ) . '" alt=""' . ( '' === $bg_url ? ' hidden' : '' ) . '></div>';
+		echo '<input type="hidden" id="b83-wl-bg-id" name="b83_wl[login_bg_id]" value="' . esc_attr( (string) $bg_id ) . '">';
+		echo '<button type="button" class="button" id="b83-wl-bg-choose">' . esc_html__( 'Bild wählen', 'b83-whitelabel' ) . '</button> ';
+		echo '<button type="button" class="button-link" id="b83-wl-bg-reset">' . esc_html__( 'Bild entfernen', 'b83-whitelabel' ) . '</button>';
+		echo '<p class="description">' . esc_html__( 'Nur für die Gestaltung „Eigenes Hintergrundbild“. Am besten ein Querformat mit mindestens 1920 px Breite. Ohne Bild wird der dunkle Farbverlauf gezeigt.', 'b83-whitelabel' ) . '</p>';
+		echo '</td></tr>';
+		echo '<tr><th scope="row">' . esc_html__( 'Optionen', 'b83-whitelabel' ) . '</th><td>';
+		$this->checkbox( 'login_animate', (bool) $s['login_animate'], __( 'Farbverlauf bewegt sich langsam', 'b83-whitelabel' ) );
+		echo '<br>';
+		$this->checkbox( 'login_credit', (bool) $s['login_credit'], __( 'Fußzeilentext unter dem Login-Formular zeigen', 'b83-whitelabel' ) );
+		echo '</td></tr>';
 		echo '</table>';
+
+		echo '<h2>' . esc_html__( 'Farbschema im Backend', 'b83-whitelabel' ) . '</h2>';
+		echo '<table class="form-table" role="presentation"><tr><th scope="row"><label for="b83-wl-admin-scheme">' . esc_html__( 'b83-Farbschema', 'b83-whitelabel' ) . '</label></th><td>';
+		$this->select(
+			'admin_scheme',
+			(string) $s['admin_scheme'],
+			array(
+				'force' => __( 'Für alle Benutzer vorgeben', 'b83-whitelabel' ),
+				'offer' => __( 'Nur zur Auswahl im Profil anbieten', 'b83-whitelabel' ),
+				'off'   => __( 'Aus', 'b83-whitelabel' ),
+			),
+			'b83-wl-admin-scheme'
+		);
+		echo '<p class="description">' . esc_html__( 'Dunkle Menüleiste, Akzente und Buttons in b83-Orange. Bei „vorgeben“ entfällt die Farbauswahl im Profil.', 'b83-whitelabel' ) . '</p>';
+		echo '</td></tr></table>';
 
 		echo '<h2>' . esc_html__( 'Benutzerliste', 'b83-whitelabel' ) . '</h2>';
 		echo '<table class="form-table" role="presentation"><tr><th scope="row"><label for="b83-wl-registered">' . esc_html__( 'Spalte „Registriert“', 'b83-whitelabel' ) . '</label></th><td>';
-		echo '<select id="b83-wl-registered" name="b83_wl[user_registered_column]">';
-		foreach ( array(
-			'all'    => __( 'Für alle anzeigen', 'b83-whitelabel' ),
-			'agency' => __( 'Nur für b83-Benutzer', 'b83-whitelabel' ),
-			'off'    => __( 'Nicht anzeigen', 'b83-whitelabel' ),
-		) as $value => $label ) {
-			printf( '<option value="%1$s"%2$s>%3$s</option>', esc_attr( $value ), selected( (string) $s['user_registered_column'], $value, false ), esc_html( $label ) );
-		}
-		echo '</select>';
+		$this->select(
+			'user_registered_column',
+			(string) $s['user_registered_column'],
+			array(
+				'all'    => __( 'Für alle anzeigen', 'b83-whitelabel' ),
+				'agency' => __( 'Nur für b83-Benutzer', 'b83-whitelabel' ),
+				'off'    => __( 'Nicht anzeigen', 'b83-whitelabel' ),
+			),
+			'b83-wl-registered'
+		);
 		echo '<p class="description">' . esc_html__( 'Zeigt das Registrierungsdatum in der Benutzerliste, per Klick auf die Überschrift sortierbar (neueste zuerst).', 'b83-whitelabel' ) . '</p>';
 		echo '</td></tr></table>';
 
