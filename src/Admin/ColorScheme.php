@@ -40,7 +40,8 @@ final class ColorScheme {
 		wp_admin_css_color(
 			self::SLUG,
 			'b83',
-			add_query_arg( 'ver', B83_WL_VERSION, B83_WL_URL . 'assets/css/colors/b83' . $suffix . '.css' ),
+			// Eigener Parameter: „ver“ überschreibt WordPress mit der WordPress-Version, der Browser bekäme sonst nach einem Plugin-Update die alte Datei aus dem Cache.
+			add_query_arg( 'b83v', B83_WL_VERSION, B83_WL_URL . 'assets/css/colors/b83' . $suffix . '.css' ),
 			array( '#2a2622', '#161412', '#d97a0c', '#b3341f' ),
 			array(
 				'base'    => '#f4f2f0',

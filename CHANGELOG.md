@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1 – 2026-11-16
+
+- Behoben: Nach einem Update zeigte der Browser weiter das alte Farbschema aus dem Cache (Inhaltsbereiche blieben orange). Die Schema-Datei wird jetzt mit der Plugin-Version geladen
+
 ## 1.5.0 – 2026-11-16
 
 - Farbschema „b83“ färbt nur noch die Seitenleiste und die Werkzeugleiste; Links, Buttons und Formulare in den Inhaltsbereichen bleiben im WordPress-Standard
