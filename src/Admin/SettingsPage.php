@@ -337,7 +337,7 @@ final class SettingsPage {
 			),
 			'b83-wl-admin-scheme'
 		);
-		echo '<p class="description">' . esc_html__( 'Dunkle Menüleiste, Akzente und Buttons in b83-Orange. Bei „vorgeben“ entfällt die Farbauswahl im Profil.', 'b83-whitelabel' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Färbt nur die Seitenleiste und die Werkzeugleiste oben (dunkel, aktiver Menüpunkt in b83-Orange). Die Inhaltsbereiche bleiben im WordPress-Standard. Bei „vorgeben“ entfällt die Farbauswahl im Profil.', 'b83-whitelabel' ) . '</p>';
 		echo '</td></tr></table>';
 
 		echo '<h2>' . esc_html__( 'Benutzerliste', 'b83-whitelabel' ) . '</h2>';

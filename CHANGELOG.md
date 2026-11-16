@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0 – 2026-11-16
+
+- Farbschema „b83“ färbt nur noch die Seitenleiste und die Werkzeugleiste; Links, Buttons und Formulare in den Inhaltsbereichen bleiben im WordPress-Standard
+
 ## 1.4.0 – 2026-11-16
 
 - Login-Seite: Logo, Meldungen, Formular und Links sitzen jetzt gemeinsam in einem weißen Kasten (alle drei Gestaltungen)
