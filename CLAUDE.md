@@ -11,6 +11,7 @@
 - **Repository:** github.com/b83-Strategisches-Online-Marketing/b83-whitelabel (öffentlich)
 - **Vertrieb:** {{intern | gratis auf wordpress.org | Freemium über Freemius}}
 - **Im Einsatz auf:** {{z. B. abtenau-info.at, sporer.at}}
+- **Aktuelle Version:** 1.5.1 (Konstante `B83_WL_VERSION`, Konstanten-Präfix `B83_WL_`)
 - **Zweck in einem Satz:** Bringt das Backend der Kundenseiten auf b83: eigener Fußzeilen-Hinweis, kein WordPress-Logo in der Werkzeugleiste, b83-Logo beim Login, aufgeräumtes Dashboard und ein reduziertes Menü für alle außer den b83-Benutzern.
 
 ## b83-Standards (gelten für alle b83-Plugins)
@@ -128,3 +129,13 @@ Dieses Repository gehört zu den WordPress-Plugins von b83 – Strategisches Onl
 #### Commits
 - Aussagekräftige Commit-Nachrichten auf Deutsch
 - Version im Header, in der Versionskonstante und im CHANGELOG gleichzeitig erhöhen (Semantic Versioning: Fehlerbehebung = x.y.Z, neue Funktion = x.Y.0, inkompatibel = X.0.0)
+
+### Abweichungen von den b83-Standards (Stand 1.5.1, bewusst so belassen)
+
+- Quellcode in `src/` mit PSR-4-Autoloader in der Hauptdatei (Standard nennt `includes/`); Hauptdatei enthält `declare(strict_types=1)`.
+- Konstanten mit Präfix `B83_WL_` (`B83_WL_VERSION`, `B83_WL_FILE`, `B83_WL_DIR`, `B83_WL_URL`), Optionen und Hooks mit `b83_whitelabel_`.
+- Plugin-Header: `Author: b83 – Wolfgang Grabs-Schrempf`, `Requires at least: 6.2`, zusätzlich `Plugin URI` und `Update URI` (GitHub).
+- Quellsprache der Oberfläche und der Code-Kommentare ist Deutsch (internes Kundenwerkzeug, kein Verkaufs-Plugin); `languages/` ist noch leer.
+- Admin-Menü über `src/Admin/B83Menu.php` (gemeinsame Vorlage, `MENU_VERSION` erhöhen, wenn die Klasse geändert wird), Einstellungen als Unterseite von „b83“.
+- Bestehende Optionsnamen (`b83_whitelabel_settings`, `_known_menu`, `_known_widgets`, `_db_version`, Transient `b83_whitelabel_release`) bleiben unverändert.
+- Einstellungen sind nur für b83-Benutzer (`Agency::is_agency()`) sichtbar.
