@@ -10,7 +10,7 @@
 - **Präfix für Funktionen, Optionen, Hooks:** `b83_whitelabel_` (Namespace: `B83\Whitelabel`)
 - **Repository:** github.com/b83-Strategisches-Online-Marketing/b83-whitelabel (öffentlich)
 - **Vertrieb:** intern
-- **Im Einsatz auf:** Kundenwebsites von b83 (u. a. ff-badgoisern.at als Testseite, karkogel.abtenau-info.at)
+- **Im Einsatz auf:** mehrere Kundenseiten
 - **Zweck in einem Satz:** Bringt das Backend der Kundenseiten auf b83: eigener Fußzeilen-Hinweis, kein WordPress-Logo in der Werkzeugleiste, b83-Logo beim Login, aufgeräumtes Dashboard und ein reduziertes Menü für alle außer den b83-Benutzern.
 
 ## b83-Standards (gelten für alle b83-Plugins)
