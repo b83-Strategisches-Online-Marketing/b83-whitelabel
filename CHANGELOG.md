@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.3 – 2026-11-23
+
+- Neu: Anleitung im Reiter „Allgemein“, wie Redakteure die Elementor-Übermittlungen sehen (Berechtigung „manage_options“ im User Role Editor, Menüpunkte freigeben, Sperre aktiv lassen)
+- Die Option „Redakteuren Elementor → Übermittlungen erlauben“ ist als nicht zuverlässig bei Elementor 4.4 gekennzeichnet
+
 ## 1.6.2 – 2026-11-23
 
 - Behoben: Die Option „Redakteuren Elementor → Übermittlungen erlauben“ greift jetzt auch beim neuen Elementor-Menü (Version 4.4), das Einträge selbst nach `manage_options` filtert

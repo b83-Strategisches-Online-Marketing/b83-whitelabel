@@ -360,7 +360,12 @@ final class SettingsPage {
 		$this->checkbox( 'block_hidden', (bool) $s['block_hidden'], __( 'Ausgeblendete Menüseiten auch beim direkten Aufruf sperren (Umleitung aufs Dashboard)', 'b83-whitelabel' ) );
 		echo '</td></tr><tr><th scope="row">' . esc_html__( 'Elementor', 'b83-whitelabel' ) . '</th><td>';
 		$this->checkbox( 'editor_submissions', (bool) $s['editor_submissions'], __( 'Redakteuren Elementor → Übermittlungen erlauben (der Punkt muss zusätzlich im Reiter „Menü“ freigegeben sein)', 'b83-whitelabel' ) );
-		echo '<p class="description">' . esc_html__( 'Senkt die nötige Berechtigung nur für das Elementor-Menü und die Seite „Übermittlungen“. Andere Elementor-Seiten bleiben für Redakteure gesperrt.', 'b83-whitelabel' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Senkt die nötige Berechtigung nur für das Elementor-Menü und die Seite „Übermittlungen“. Bei Elementor 4.4 wirkt das nicht zuverlässig. Dort gilt die Anleitung darunter.', 'b83-whitelabel' ) . '</p>';
+		echo '<div class="notice notice-info inline"><p><strong>' . esc_html__( 'Elementor-Übermittlungen für Redakteure sichtbar machen', 'b83-whitelabel' ) . '</strong></p><ol>';
+		echo '<li>' . esc_html__( 'Im Plugin „User Role Editor“ die Rolle „Redakteur“ öffnen und die Berechtigung „manage_options“ anhaken.', 'b83-whitelabel' ) . '</li>';
+		echo '<li>' . esc_html__( 'Hier im Reiter „Menü“ „Elementor“ (den oberen Punkt) und darunter „Übermittlungen“ anhaken. Alles andere, besonders „Einstellungen“, bleibt abgehakt.', 'b83-whitelabel' ) . '</li>';
+		echo '<li>' . esc_html__( 'Im Reiter „Allgemein“ die Sperre aktiv lassen („Ausgeblendete Menüseiten auch beim direkten Aufruf sperren“). Mit „manage_options“ könnten Redakteure sonst die WordPress-Einstellungen über die Adresse aufrufen, auch wenn das Menü sie nicht zeigt.', 'b83-whitelabel' ) . '</li>';
+		echo '</ol></div>';
 		echo '</td></tr><tr><th scope="row">' . esc_html__( 'Daten', 'b83-whitelabel' ) . '</th><td>';
 		$this->checkbox( 'delete_on_uninstall', (bool) $s['delete_on_uninstall'], __( 'Einstellungen beim Löschen des Plugins entfernen', 'b83-whitelabel' ) );
 		echo '</td></tr></table>';
