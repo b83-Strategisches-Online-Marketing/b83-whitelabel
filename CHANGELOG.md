@@ -1,8 +1,8 @@
 # Changelog
 
-## Unveröffentlicht
+## 1.6.0 – 2026-11-23
 
-- Neu: Option „Redakteuren Elementor → Übermittlungen erlauben“ (Reiter „Allgemein“, Standard aus). Elementor verlangt dafür sonst `manage_options`, Redakteure sahen den Menüpunkt trotz Freigabe nicht
+- Neu: Option „Redakteuren Elementor → Übermittlungen erlauben“ (Reiter „Allgemein“, Standard aus). Bisher sahen Redakteure den Menüpunkt trotz Freigabe im Reiter „Menü“ nicht, weil Elementor dafür Administratorrechte verlangt
 
 ## 1.5.1 – 2026-11-16
 
