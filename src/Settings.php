@@ -182,8 +182,17 @@ final class Settings {
 	 * @return string[]
 	 */
 	private static function keys( $raw, array $allowed ): array {
-		$raw = array_map( 'strval', (array) $raw );
-		return array_values( array_intersect( $allowed, $raw ) );
+		// WordPress legt manche Menü-Slugs mit "&amp;" an (z. B. edit-tags.php?taxonomy=x&amp;post_type=y).
+		// Der Browser sendet sie mit "&" zurück. Verglichen wird deshalb in einheitlicher Schreibweise.
+		$normalize = static fn( string $value ): string => str_replace( '&amp;', '&', $value );
+		$raw       = array_flip( array_map( $normalize, array_map( 'strval', (array) $raw ) ) );
+		$result    = array();
+		foreach ( $allowed as $key ) {
+			if ( isset( $raw[ $normalize( (string) $key ) ] ) ) {
+				$result[] = $key;
+			}
+		}
+		return $result;
 	}
 
 	/**

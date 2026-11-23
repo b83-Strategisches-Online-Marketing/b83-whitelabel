@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.2 – 2026-11-23
+
+- Behoben: Die Option „Redakteuren Elementor → Übermittlungen erlauben“ greift jetzt auch beim neuen Elementor-Menü (Version 4.4), das Einträge selbst nach `manage_options` filtert
+- Behoben: Im Reiter „Menü“ wurden manche angehakten Unterpunkte nicht gespeichert, vor allem Kategorien und andere Taxonomien von eigenen Beitragstypen (Slug mit `&amp;`). Der Vergleich ignoriert jetzt den Unterschied zwischen `&` und `&amp;`
+
 ## 1.6.1 – 2026-11-23
 
 - Behoben: Die Option „Redakteuren Elementor → Übermittlungen erlauben“ wirkte nicht. Sie erkennt jetzt den Menüpunkt in beiden Menüaufbauten von Elementor und erlaubt Redakteuren zusätzlich die Datenabfrage der Übermittlungen (REST), die ebenfalls Administratorrechte verlangte

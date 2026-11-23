@@ -44,6 +44,9 @@ final class EditorAccess {
 		add_action( 'admin_menu', array( $this, 'lower_menu_capabilities' ), PHP_INT_MAX - 20 );
 		add_filter( 'rest_request_before_callbacks', array( $this, 'rest_before' ), 10, 3 );
 		add_filter( 'rest_request_after_callbacks', array( $this, 'rest_after' ), 10, 3 );
+		if ( is_admin() ) {
+			add_filter( 'user_has_cap', array( $this, 'grant_for_menu_item' ), 10, 3 );
+		}
 	}
 
 	private function active(): bool {
@@ -109,6 +112,37 @@ final class EditorAccess {
 	public function grant_manage_options( $allcaps, $caps, $args ) {
 		if ( isset( $args[0] ) && 'manage_options' === $args[0] ) {
 			$allcaps['manage_options'] = true;
+		}
+		return $allcaps;
+	}
+
+	/**
+	 * Elementors eigenes Menü („Editor One“) blendet Einträge aus, wenn
+	 * current_user_can( get_capability() ) fehlschlägt. Für „Übermittlungen“
+	 * ist das fest manage_options. Es gibt dafür keinen Filter. Deshalb wird
+	 * manage_options nur für genau diese Prüfung zugestanden: Erkannt wird sie
+	 * am Aufruf von is_item_accessible() mit dem Menüeintrag „Übermittlungen“.
+	 *
+	 * @param array<string,bool> $allcaps Berechtigungen des Benutzers.
+	 * @param string[]           $caps    Geprüfte Berechtigungen.
+	 * @param array<int,mixed>   $args    Argumente (0 = Berechtigung).
+	 * @return array<string,bool>
+	 */
+	public function grant_for_menu_item( $allcaps, $caps, $args ) {
+		if ( ! isset( $args[0] ) || 'manage_options' !== $args[0] || empty( $allcaps[ self::CAPABILITY ] ) || ! Settings::value( 'editor_submissions' ) ) {
+			return $allcaps;
+		}
+
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- nur zur Erkennung der Elementor-Menüprüfung.
+		foreach ( debug_backtrace( DEBUG_BACKTRACE_PROVIDE_OBJECT, 8 ) as $frame ) {
+			if ( 'is_item_accessible' !== ( $frame['function'] ?? '' ) ) {
+				continue;
+			}
+			$item = $frame['args'][0] ?? null;
+			if ( is_object( $item ) && $item instanceof \ElementorPro\Modules\Forms\Submissions\AdminMenuItems\Submissions_Menu_Item ) {
+				$allcaps['manage_options'] = true;
+			}
+			break;
 		}
 		return $allcaps;
 	}
