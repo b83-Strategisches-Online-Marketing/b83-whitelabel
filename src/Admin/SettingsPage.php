@@ -358,6 +358,9 @@ final class SettingsPage {
 		echo '<h2>' . esc_html__( 'Sperre und Deinstallation', 'b83-whitelabel' ) . '</h2>';
 		echo '<table class="form-table" role="presentation"><tr><th scope="row">' . esc_html__( 'Sperre', 'b83-whitelabel' ) . '</th><td>';
 		$this->checkbox( 'block_hidden', (bool) $s['block_hidden'], __( 'Ausgeblendete Menüseiten auch beim direkten Aufruf sperren (Umleitung aufs Dashboard)', 'b83-whitelabel' ) );
+		echo '</td></tr><tr><th scope="row">' . esc_html__( 'Elementor', 'b83-whitelabel' ) . '</th><td>';
+		$this->checkbox( 'editor_submissions', (bool) $s['editor_submissions'], __( 'Redakteuren Elementor → Übermittlungen erlauben (der Punkt muss zusätzlich im Reiter „Menü“ freigegeben sein)', 'b83-whitelabel' ) );
+		echo '<p class="description">' . esc_html__( 'Senkt die nötige Berechtigung nur für das Elementor-Menü und die Seite „Übermittlungen“. Andere Elementor-Seiten bleiben für Redakteure gesperrt.', 'b83-whitelabel' ) . '</p>';
 		echo '</td></tr><tr><th scope="row">' . esc_html__( 'Daten', 'b83-whitelabel' ) . '</th><td>';
 		$this->checkbox( 'delete_on_uninstall', (bool) $s['delete_on_uninstall'], __( 'Einstellungen beim Löschen des Plugins entfernen', 'b83-whitelabel' ) );
 		echo '</td></tr></table>';

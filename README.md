@@ -56,6 +56,7 @@ in der `wp-config.php` schaltet alle Anpassungen ab. Die Einstellungsseite bleib
 | `b83_wl_default_menu` | Standard-Hauptpunkte, solange das Menü nicht gespeichert wurde |
 | `b83_wl_default_hidden_children` | Unterpunkte, die standardmäßig ausgeblendet sind (`update-core.php`) |
 | `b83_wl_always_allowed_pages` | Hauptpunkte, die immer sichtbar sind (`index.php`, `profile.php`) |
+| `b83_wl_editor_menu_slugs` | Menü-Slugs, deren Berechtigung bei aktivierter Option „Elementor → Übermittlungen für Redakteure“ auf `edit_pages` gesenkt wird (`elementor`, `e-form-submissions`) |
 | `b83_wl_default_widgets` | Zusätzliche Dashboard-Widgets, die standardmäßig sichtbar sind |
 | `b83_wl_footer_text` | Text links in der Fußzeile |
 | `b83_wl_login_logo_url` | Adresse des Login-Logos |

@@ -58,6 +58,7 @@ final class Settings {
 			'menu_seen'            => array(),
 			'menu_configured'      => false,
 			'block_hidden'         => true,
+			'editor_submissions'   => false,
 			'user_registered_column' => 'all',
 			'agency_users'         => array(),
 			'delete_on_uninstall'  => false,
@@ -137,6 +138,7 @@ final class Settings {
 					'login_credit'        => ! empty( $input['login_credit'] ),
 					'admin_scheme'        => self::choice( $input['admin_scheme'] ?? '', array( 'force', 'offer', 'off' ) ),
 					'block_hidden'        => ! empty( $input['block_hidden'] ),
+					'editor_submissions'  => ! empty( $input['editor_submissions'] ),
 					'user_registered_column' => in_array( $input['user_registered_column'] ?? '', array( 'all', 'agency', 'off' ), true ) ? (string) $input['user_registered_column'] : 'all',
 					'delete_on_uninstall' => ! empty( $input['delete_on_uninstall'] ),
 				);

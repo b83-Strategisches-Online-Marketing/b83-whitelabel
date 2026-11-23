@@ -1,5 +1,9 @@
 # Changelog
 
+## Unveröffentlicht
+
+- Neu: Option „Redakteuren Elementor → Übermittlungen erlauben“ (Reiter „Allgemein“, Standard aus). Elementor verlangt dafür sonst `manage_options`, Redakteure sahen den Menüpunkt trotz Freigabe nicht
+
 ## 1.5.1 – 2026-11-16
 
 - Behoben: Nach einem Update zeigte der Browser weiter das alte Farbschema aus dem Cache (Inhaltsbereiche blieben orange). Die Schema-Datei wird jetzt mit der Plugin-Version geladen
