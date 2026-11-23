@@ -46,10 +46,11 @@ final class Plugin {
 
 		( new Admin\Branding() )->register();
 		( new Admin\ColorScheme() )->register();
+		// Auch außerhalb des Backends, weil die Übermittlungen ihre Daten per REST laden.
+		( new Admin\EditorAccess() )->register();
 
 		if ( is_admin() ) {
 			( new Admin\Dashboard() )->register();
-			( new Admin\EditorAccess() )->register();
 			( new Admin\MenuFilter() )->register();
 			( new Admin\UserColumns() )->register();
 		}

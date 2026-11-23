@@ -22,3 +22,6 @@ CLAUDE.local.md
 
 # System
 desktop.ini
+
+# Fremd-Plugins zum Nachlesen (lizenzpflichtig, nie einchecken)
+_extern/

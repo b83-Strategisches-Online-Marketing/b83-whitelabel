@@ -1,5 +1,9 @@
 # Changelog
 
+## Unveröffentlicht
+
+- Behoben: Die Option „Redakteuren Elementor → Übermittlungen erlauben“ wirkte nicht. Sie erkennt jetzt den Menüpunkt in beiden Menüaufbauten von Elementor und erlaubt Redakteuren zusätzlich die Datenabfrage der Übermittlungen (REST), die ebenfalls Administratorrechte verlangte
+
 ## 1.6.0 – 2026-11-23
 
 - Neu: Option „Redakteuren Elementor → Übermittlungen erlauben“ (Reiter „Allgemein“, Standard aus). Bisher sahen Redakteure den Menüpunkt trotz Freigabe im Reiter „Menü“ nicht, weil Elementor dafür Administratorrechte verlangt
